@@ -9,7 +9,7 @@ export default function Logo({ light = false }) {
     >
       {/* Logo Image */}
       <img
-        src="/urbyn_build_group_orange_border.svg"
+        src="/urbyn-build-group/urbyn_build_group_orange_border.svg"
         alt="Urbyn Build Group Logo"
         className="h-[34px] w-auto"
       />
