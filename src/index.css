@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-brand-cream text-brand-dark font-sans;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display leading-tight;
+  }
+
+  /* Custom selection colour */
+  ::selection {
+    background-color: #f5d5cc;
+    color: #151618;
+  }
+}
+
+/* ── Components ───────────────────────────────────────────────────── */
+@layer components {
+  /* Section label — small uppercase tag above headings */
+  .section-label {
+    @apply inline-block text-xs font-sans font-medium tracking-widest uppercase mb-3;
+    color: #ba4a2b;
+  }
+
+  /* Section heading — reused across all sections */
+  .section-heading {
+    @apply font-display text-3xl md:text-4xl text-brand-dark;
+  }
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 text-white font-sans font-medium
+           px-6 py-3.5 rounded-sm text-sm tracking-wide
+           shadow-cta active:scale-[0.98]
+           transition-all duration-200 whitespace-nowrap;
+    background-color: #ba4a2b;
+  }
+  .btn-primary:hover {
+    background-color: #9e3d23;
+  }
+
+  /* Secondary / ghost CTA button */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-transparent text-brand-dark font-sans font-medium
+           px-6 py-3.5 rounded-sm text-sm tracking-wide
+           border border-brand-border
+           transition-all duration-200 whitespace-nowrap;
+  }
+  .btn-secondary:hover {
+    border-color: #ba4a2b;
+    color: #ba4a2b;
+  }
+
+  /* Card surface */
+  .card {
+    @apply bg-white rounded-sm shadow-card border border-brand-border
+           transition-all duration-300 hover:shadow-card-hover;
+  }
+  .card:hover {
+    border-color: rgba(186, 74, 43, 0.25);
+  }
+
+  /* Divider line */
+  .divider {
+    @apply block w-10 h-0.5 mt-2 mb-6;
+    background-color: #ba4a2b;
+  }
+}
+
+/* ── Utilities ────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Grain overlay — add texture depth to sections */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* Fade-up animation for scroll reveals */
+  .fade-up {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ── Before/After Slider ──────────────────────────────────────────── */
+.before-after-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  outline: none;
+  cursor: col-resize;
+}
+.before-after-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #ba4a2b;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  cursor: col-resize;
+}
+.before-after-slider::-moz-range-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #ba4a2b;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  cursor: col-resize;
+}
